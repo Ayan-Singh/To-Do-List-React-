@@ -1,13 +1,28 @@
-import { useState,useEffect} from 'react'
+import { useState} from 'react'
 import './App.css'
 
+function useCounter(){
+  const[count,setCount]=useState(0);
+
+  function increaseCount(){
+    setCount(count+1);
+  }
+  return{
+    count:count,
+    increaseCount:increaseCount
+  }
+
+}
+
+function useFetch()
+
+
 function App() {
-  const [count,setCount] = useState(0)
-  useEffect(())
+const{count,increaseCount}=useCounter()
 
   return (
     <>
-      <div>Counter {count}</div>
+     <button onClick={increaseCount}>Counter {count}</button>
     </>
   )
 }
