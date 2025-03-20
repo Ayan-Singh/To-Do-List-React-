@@ -14,14 +14,29 @@ function useCounter(){
 
 }
 
-function useFetch()
+function useFetch(){
+  const[post,setPost] = useState({})
+  async function getData(){
+    const response=await fetch("https/url");
+    const json= await response.json();
+    setPost(json)
+  }
+  useEffect(()=>{
+    getData();
+  },[])
+
+  return post
+
+}
 
 
 function App() {
 const{count,increaseCount}=useCounter()
+const post = useFetch()
 
   return (
     <>
+    <div>{post.title}</div>
      <button onClick={increaseCount}>Counter {count}</button>
     </>
   )
