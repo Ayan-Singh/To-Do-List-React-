@@ -1,24 +1,27 @@
 import { useState } from "react";
 
-
-export default function Counter(){
-const [count,setCount] =useState(0);
-function increaseCount(){
-    if(count >=0 ){
+function Counter(){
+    const[count,setCount]=useState(0)
+    function increment(){
         setCount(count+1);
     }
-}
-function decreaseCount(){
-    if(count >0 ){
-        setCount(count-1);
+    function decrement(){
+        if(count>0){
+            setCount(count-1)
+        }
     }
+    function reset(){
+        setCount(0)
+    }
+    return(
+        <>
+        <div style={{height:"50px", display:"flex",alignItems:"center",fontSize:"25px",backgroundColor: 'blue', color: 'white',width:"200px"}}>Counter {count}</div>
+        <div>
+            <button onClick={increment}>Add+</button>
+            <button onClick={decrement}>Subs-</button>
+            <button onClick={reset}>Reset</button>
+        </div>
+        </>
+    )
 }
-
-return(
-    <div>
-        <button onClick={increaseCount}>+</button>
-        Counter {count}
-        <button onClick={decreaseCount}>-</button>    
-    </div>
-)
-}
+export default Counter
